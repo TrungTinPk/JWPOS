@@ -1,12 +1,18 @@
-﻿namespace JW.POS.Web.Services
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace JW.POS.Web.Services
 {
     public static class ServiceCollectionExtension
     {
         public static IServiceCollection AddInternalService(
-            this IServiceCollection services
+            this IServiceCollection services,
+             IConfiguration config
         )
         {
-            return services.AddScoped<ITokenService, TokenService>();
+            return services
+                .Configure<TokenSetting>(config.GetSection("JwtToken"))
+                .AddScoped<ITokenService, TokenService>()
+                ;
         }
     }
 }

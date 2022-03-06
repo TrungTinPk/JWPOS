@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JW.POS.Infrastructure.Data.Configurations
+namespace JW.POS.Core.Data.Configurations
 {
     public class ProductConfiguration : IEntityTypeConfiguration<Product>
     {

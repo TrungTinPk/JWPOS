@@ -1,5 +1,5 @@
-﻿using JW.POS.Core.Entities;
-using JW.POS.Infrastructure.Data.Configurations;
+﻿using JW.POS.Core.Data.Configurations;
+using JW.POS.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JW.POS.Infrastructure.Data
+namespace JW.POS.Core.Data
 {
     public class TenantDbContext : DbContext
     {

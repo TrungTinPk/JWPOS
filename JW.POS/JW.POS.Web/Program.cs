@@ -1,5 +1,4 @@
 using JW.POS.Core;
-using JW.POS.Infrastructure;
 using JW.POS.Product;
 using JW.POS.User;
 using JW.POS.Web.Services;
@@ -17,9 +16,8 @@ var connectionString = builder.Configuration.GetConnectionString("TenantConnecti
 // Add services to the container.
 
 builder.Services
-    .AddCoreService(builder.Configuration)
-    .AddInternalService()
-    .AddInfrastructureService(connectionString, isDevelopment, isDevelopment)
+    .AddInternalService(builder.Configuration)
+    .AddCoreService(connectionString, isDevelopment, isDevelopment)
     .AddProductService()
     .AddUserService()
     .AddControllersWithViews();

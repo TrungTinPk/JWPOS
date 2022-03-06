@@ -1,5 +1,5 @@
 ﻿using JW.POS.Core;
-using JW.POS.Infrastructure.Data;
+using JW.POS.Core.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

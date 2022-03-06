@@ -1,5 +1,5 @@
-﻿using JW.POS.User;
-using JW.POS.User.Models;
+﻿using JW.POS.User.Models;
+using JW.POS.User.Services;
 using JW.POS.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,11 +19,15 @@ namespace JW.POS.Web.Controllers
         [Route("login")]
         public async Task<IActionResult> Login(UserLogin user)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             var valid = await _userService.IsValidUserAccountAsync(user);
 
             if (valid)
             {
-                var userToken = new UserToken();
+                var userToken = await _userService.GetUserTokenInfoAsync(user.UserName);
                 var token = _tokenService.GetToken(userToken, 0);
 
                 return Ok(token);

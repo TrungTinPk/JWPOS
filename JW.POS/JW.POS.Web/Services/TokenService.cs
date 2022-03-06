@@ -1,5 +1,4 @@
-﻿using JW.POS.Core.Configs;
-using JW.POS.User.Models;
+﻿using JW.POS.User.Models;
 using Light.GuardClauses;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -33,6 +32,11 @@ namespace JW.POS.Web.Services
                 new Claim(ClaimTypes.Name, user.FullName),
                 new Claim(ClaimTypes.Role, user.Role)
             };
+
+            if (expiryMinutes == 0)
+            {
+                expiryMinutes = _tokenSetting.ExpiryMinutes;
+            }
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenSetting.SecurityKey));
             var token = new JwtSecurityToken(
