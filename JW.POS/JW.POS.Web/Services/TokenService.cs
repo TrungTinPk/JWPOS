@@ -1,4 +1,7 @@
-﻿using JW.POS.User.Models;
+﻿using JW.POS.Core.Configs;
+using JW.POS.User.Models;
+using Light.GuardClauses;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -12,6 +15,16 @@ namespace JW.POS.Web.Services
     }
     public class TokenService : ITokenService
     {
+        private readonly TokenSetting _tokenSetting;
+        public TokenService(IOptions<TokenSetting> tokenOptions)
+        {
+            _tokenSetting = tokenOptions.Value;
+
+            _tokenSetting.SecurityKey.MustNotBeNullOrEmpty();
+            _tokenSetting.Issuer.MustNotBeNullOrEmpty();
+            _tokenSetting.Audience.MustNotBeNullOrEmpty();
+        }
+
         public string GetToken(UserToken user, int expiryMinutes = 0)
         {
             var claims = new List<Claim>()
@@ -21,10 +34,10 @@ namespace JW.POS.Web.Services
                 new Claim(ClaimTypes.Role, user.Role)
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(""));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenSetting.SecurityKey));
             var token = new JwtSecurityToken(
-                issuer: "",
-                audience: "",
+                issuer: _tokenSetting.Issuer,
+                audience: _tokenSetting.Audience,
                 claims: claims,
                 notBefore: DateTime.Now,
                 expires: DateTime.Now.AddMinutes(expiryMinutes),

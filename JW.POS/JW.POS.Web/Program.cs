@@ -2,6 +2,7 @@ using JW.POS.Core;
 using JW.POS.Infrastructure;
 using JW.POS.Product;
 using JW.POS.User;
+using JW.POS.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var env = builder.Environment.EnvironmentName;
@@ -16,6 +17,8 @@ var connectionString = builder.Configuration.GetConnectionString("TenantConnecti
 // Add services to the container.
 
 builder.Services
+    .AddCoreService(builder.Configuration)
+    .AddInternalService()
     .AddInfrastructureService(connectionString, isDevelopment, isDevelopment)
     .AddProductService()
     .AddUserService()
