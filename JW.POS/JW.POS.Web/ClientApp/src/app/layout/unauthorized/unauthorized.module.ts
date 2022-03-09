@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { UnauthorizedRoutingModule } from './unauthorized-routing.module';
 import { LoginComponent } from './login/login.component';
+import {HttpClientModule} from "@angular/common/http";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [
     CommonModule,
-    UnauthorizedRoutingModule
+    UnauthorizedRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ]
 })
 export class UnauthorizedModule { }
