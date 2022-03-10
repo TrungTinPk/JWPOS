@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\JW.POS.Common.Extensions\JW.POS.Common.Extension.csproj" />
     <ProjectReference Include="..\JW.POS.Data\JW.POS.Core.csproj" />
-    <ProjectReference Include="..\JW.POS.Infrastructure\JW.POS.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

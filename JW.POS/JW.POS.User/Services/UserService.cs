@@ -1,4 +1,7 @@
-﻿using JW.POS.User.Models;
+﻿using JW.POS.Common.Extension;
+using JW.POS.Core.Data;
+using JW.POS.User.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace JW.POS.User.Services
 {
@@ -16,24 +19,38 @@ namespace JW.POS.User.Services
         /// </summary>
         /// <param name="username"></param>
         /// <returns></returns>
-        Task<UserToken> GetUserTokenInfoAsync(string username);
+        Task<UserToken> GetUserInfoAsync(string username);
     }
 
     public class UserService : IUserService
     {
-        public UserService()
+        private readonly TenantDbContextFactory _tenantDbContextFactory;
+        public UserService(TenantDbContextFactory tenantDbContextFactory)
         {
-
+            _tenantDbContextFactory = tenantDbContextFactory;
         }
 
-        public Task<UserToken> GetUserTokenInfoAsync(string username)
+        public async Task<UserToken> GetUserInfoAsync(string username)
         {
-            throw new NotImplementedException();
+            using var context = _tenantDbContextFactory.CreateDbContext();
+            return await context.Users
+                .Where(u => u.UserName == username)
+                .Select(u => new UserToken {
+                    UserName = u.UserName,
+                    FirstName = u.FirstName,
+                    LastName = u.LastName
+            }).FirstOrDefaultAsync();
         }
 
-        public Task<bool> IsValidUserAccountAsync(UserLogin user)
+        public async Task<bool> IsValidUserAccountAsync(UserLogin user)
         {
-            throw new NotImplementedException();
+            using var context = _tenantDbContextFactory.CreateDbContext();
+            var hashPassword = user.Password.Hash();
+
+            var valid = await context.Users
+                .AnyAsync(u => u.UserName == user.UserName && u.Password == hashPassword);
+
+            return valid;
         }
     }
 }

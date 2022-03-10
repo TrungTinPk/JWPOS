@@ -11,7 +11,7 @@ namespace JW.POS.Web.Services
         {
             return services
                 .Configure<TokenSetting>(config.GetSection("JwtToken"))
-                .AddScoped<ITokenService, TokenService>()
+                .AddScoped<ITokenGeneratorService, TokenGeneratorService>()
                 ;
         }
     }

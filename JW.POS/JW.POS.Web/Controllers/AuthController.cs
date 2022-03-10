@@ -8,8 +8,8 @@ namespace JW.POS.Web.Controllers
     public class AuthController : ApplicationBaseController
     {
         private readonly IUserService _userService;
-        private readonly ITokenService _tokenService;
-        public AuthController(IUserService userService, ITokenService tokenService)
+        private readonly ITokenGeneratorService _tokenService;
+        public AuthController(IUserService userService, ITokenGeneratorService tokenService)
         {
             _userService = userService;
             _tokenService = tokenService;
@@ -27,8 +27,8 @@ namespace JW.POS.Web.Controllers
 
             if (valid)
             {
-                var userToken = await _userService.GetUserTokenInfoAsync(user.UserName);
-                var token = _tokenService.GetToken(userToken, 0);
+                var userInfo = await _userService.GetUserInfoAsync(user.UserName);
+                var token = _tokenService.GetToken(userInfo, 0);
 
                 return Ok(token);
             }
