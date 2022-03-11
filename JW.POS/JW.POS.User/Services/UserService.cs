@@ -24,8 +24,8 @@ namespace JW.POS.User.Services
 
     public class UserService : IUserService
     {
-        private readonly TenantDbContextFactory _tenantDbContextFactory;
-        public UserService(TenantDbContextFactory tenantDbContextFactory)
+        private readonly ITenantDbContextFactory _tenantDbContextFactory;
+        public UserService(ITenantDbContextFactory tenantDbContextFactory)
         {
             _tenantDbContextFactory = tenantDbContextFactory;
         }

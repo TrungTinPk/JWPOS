@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {AuthorizedComponent} from './layout/authorized/authorized.component';
-import {AuthorizeGuard} from './guards/authorize.guard';
+import {AuthorizeGuard} from './shared/guards/authorize.guard';
 
 const routes: Routes = [
   {
@@ -21,15 +21,16 @@ const routes: Routes = [
     },{
       path: 'products',
       loadChildren: () => import('src/app/pages/product/product.module').then(m => m.ProductModule)
-    }, {
-      path: 'login',
-      loadChildren: () => import('src/app/layout/unauthorized/unauthorized.module')
     }]
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('src/app/layout/unauthorized/unauthorized.module').then(m => m.UnauthorizedModule)
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

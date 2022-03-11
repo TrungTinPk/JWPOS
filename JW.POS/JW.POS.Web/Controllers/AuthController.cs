@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JW.POS.Web.Controllers
 {
+    [ApiController]
     public class AuthController : ApplicationBaseController
     {
         private readonly IUserService _userService;

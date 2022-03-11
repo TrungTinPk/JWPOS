@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from "../../../services/user.service";
-import {AuthenticateService} from "../../../services/authenticate.service";
 import {FormBuilder, FormGroup, Validator, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
+import {AuthenticateService, UserService} from "@app/shared/services";
 
 @Component({
   selector: 'app-login',
@@ -15,10 +15,12 @@ export class LoginComponent implements OnInit {
   constructor(
     private userService: UserService,
     private authService: AuthenticateService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.initForm()
   }
 
   initForm(): void {
@@ -39,6 +41,7 @@ export class LoginComponent implements OnInit {
       next: token => {
         if (token?.length) {
           this.authService.persistToken(token)
+          this.router.navigate(['/'])
         }
       }
     })
