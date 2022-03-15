@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using JW.POS.Common.Testing;
 using JW.POS.Product;
 using JW.POS.Product.Services;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +19,7 @@ namespace JW.POS.Products.Tests
         public ProductTests()
         {
             _serviceProvider = new ServiceCollection()
+                .AddTestingDatabase()
                 .AddProductService()
                 .BuildServiceProvider();
         }
@@ -35,7 +37,6 @@ namespace JW.POS.Products.Tests
                 ImportSale = 12
             });
 
-            //response.StatusCode = null;
             //Assert.Null(response.StatusCode);
             response.Should().NotBeNull();
             //response.StatusCode.Should().BeNull();

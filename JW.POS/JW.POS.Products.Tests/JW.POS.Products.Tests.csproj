@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\JW.POS.Common.Testing\JW.POS.Common.Testing.csproj" />
     <ProjectReference Include="..\JW.POS.Data\JW.POS.Core.csproj" />
     <ProjectReference Include="..\JW.POS.Products\JW.POS.Product.csproj" />
   </ItemGroup>
