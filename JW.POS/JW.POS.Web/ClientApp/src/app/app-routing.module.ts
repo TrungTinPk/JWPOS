@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('src/app/layout/unauthorized/unauthorized.module').then(m => m.UnauthorizedModule)
+  },
+  {
+    path: 'pos',
+    loadChildren: () => import('src/app/pages/pos/pos.component').then(m => m.PosComponent)
   }
 ];
 
