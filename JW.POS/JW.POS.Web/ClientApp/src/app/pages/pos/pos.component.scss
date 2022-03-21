@@ -1,0 +1,40 @@
+$header-height: 54px;
+$payment-with: 445px;
+
+
+
+.pos__header {
+    .btn {
+      color: #fff;
+    }
+}
+
+.pos {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: $header-height auto;
+
+  .main {
+    display: grid;
+    grid-template-columns: auto $payment-with;
+    background-color: #ddd;
+    grid-gap: 1rem;
+    > div {
+      border: 1px solid;
+    }
+  }
+
+  .payment-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .25rem 0;
+  }
+}
+
+
+
+
+
+
+

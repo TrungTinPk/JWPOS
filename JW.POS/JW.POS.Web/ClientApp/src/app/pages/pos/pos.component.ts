@@ -4,7 +4,7 @@ import {Product} from "@app/pages/pos/models";
 @Component({
   selector: 'app-pos',
   templateUrl: './pos.component.html',
-  styleUrls: ['./pos.component.css']
+  styleUrls: ['./pos.component.scss']
 })
 export class PosComponent implements OnInit {
 

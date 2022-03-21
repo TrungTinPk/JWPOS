@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {PosComponent} from "@app/pages/pos/pos.component";
 
 const routes: Routes = [{
-  path: "",
+  path: '',
   component: PosComponent
 }];
 

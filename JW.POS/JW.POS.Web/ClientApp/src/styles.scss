@@ -1,3 +1,41 @@
 $primary: #0964CF;
 $secondary: #2FA84F;
 
+$btn-icon-width: 38px;
+$btn-icon-height: 38px;
+
+.btn-hoverable {
+  &:hover {
+    background: rgb(0 0 0 / 10%) !important;
+  }
+
+  &--active {
+    background: rgb(0 0 0 / 30%) !important;
+  }
+}
+
+.btn-icon{
+  width: $btn-icon-width;
+  height: $btn-icon-height;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.md-input {
+  border-bottom: 1px solid #eee;
+
+  &:focus {
+    border-bottom-color: #bebebe;
+  }
+}
+
+.d-grid {
+  display: grid;
+  &.has-2-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  &.has-3-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

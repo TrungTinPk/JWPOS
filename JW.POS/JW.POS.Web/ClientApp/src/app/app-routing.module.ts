@@ -29,7 +29,7 @@ const routes: Routes = [
   },
   {
     path: 'pos',
-    loadChildren: () => import('src/app/pages/pos/pos.component').then(m => m.PosComponent)
+    loadChildren: () => import('src/app/pages/pos/pos.module').then(m => m.PosModule)
   }
 ];
 

@@ -30,7 +30,7 @@ export class AuthorizeInterceptor implements HttpInterceptor {
       url: stringHelper.trimEnding(this._baseUrl,'/') + '/' + stringHelper.trimLeading(req.url,'/')
     })
 
-    if (!!token && token.length > 0 && this.isSameOrigin(req)) {
+    if (!!token && token.length > 0) {
       req = req.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`

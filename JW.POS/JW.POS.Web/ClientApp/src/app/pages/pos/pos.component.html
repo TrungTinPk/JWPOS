@@ -1,59 +1,64 @@
 <div class="pos">
-  <header>
-    <div class="search">
-      <i class="bi bi-search"></i>
-      <input type="text" name="" id="" class="form-control" placeholder="Add Product to cart (F3)">
+  <header class="align-items-center bg-primary d-flex px-3 pos__header">
+    <div class="search align-items-center bg-white d-flex outline-none ps-2 rounded-3 shadow-none">
+      <i class="bi bi-search mx-2"></i>
+      <input type="text" name="" id="" class="form-control border-0 shadow-none" placeholder="Add Product to cart (F3)"
+      style="min-width: 300px;">
     </div>
-    <div class="mode">
-      <button class="btn btn-default" type="button">
-        <i class="bi bi-upc-scan"></i>
+    <div class="mode ms-2">
+      <button class="btn btn-hoverable" type="button">
+        <i class="bi bi-upc-scan me-2"></i>
         <span>(F10)</span>
       </button>
     </div>
-    <div class="orders">
-      <div class="order-tabs">
-        <button type="button" class="btn btn-primary">
+    <div class="orders d-flex mx-2">
+      <div class="order-tabs me-2 py-2">
+        <button type="button" class="btn btn-hoverable btn-hoverable--active">
           Order 1
-          <i class="bi bi-x-circle"></i>
+          <i class="bi bi-x-circle ms-1"></i>
         </button>
       </div>
-      <div class="order-tabs">
-        <button type="button" class="btn btn-primary">
+      <div class="order-tabs me-1 py-2 active bg-white">
+        <button type="button" class="btn shadow-none">
           Order 2
-          <i class="bi bi-x-circle"></i>
+          <i class="bi bi-x-circle ms-1"></i>
         </button>
       </div>
     </div>
-    <div class="branches">
-      <button class="btn btn-default" type="button">
+    <button type="button" class="btn align-items-center d-inline-flex justify-content-center rounded-circle btn-hoverable" style="width: 38px; height: 38px">
+      <i class="bi bi-plus"style="font-size: 28px"></i>
+    </button>
+    <div class="flex-fill"></div>
+    <div class="align-items-center branches btn-group-sm d-flex flex-column justify-content-between">
+      <button class="btn btn-hoverable py-0" type="button">
         <i class="bi bi-geo-alt"></i>
         Default Branch
       </button>
-      <button class="btn btn-default" type="button">
+      <button class="btn btn-hoverable py-0" type="button">
         <i class="bi bi-person"></i>
         Username
       </button>
     </div>
     <div class="menu">
-      <button class="btn btn-default" type="button">
+      <button class="btn btn-hoverable d-inline-flex align-items-center justify-content-center rounded-circle" type="button" style="width: 38px">
         <i class="bi bi-table"></i>
       </button>
-      <button class="btn btn-default" type="button">
+      <button class="btn btn-hoverable d-inline-flex align-items-center justify-content-center rounded-circle" type="button" style="width: 38px">
         <i class="bi bi-arrows-fullscreen"></i>
       </button>
-      <button class="btn btn-default" type="button">
+      <button class="btn btn-hoverable d-inline-flex align-items-center justify-content-center rounded-circle" type="button" style="width: 38px">
         <i class="bi bi-wifi"></i>
       </button>
-      <button class="btn btn-default" type="button">
+      <button class="btn btn-hoverable d-inline-flex align-items-center justify-content-center rounded-circle" type="button" style="width: 38px">
         <i class="bi bi-house"></i>
       </button>
-      <button class="btn btn-default" type="button">
+      <button class="btn btn-outline-light btn-sm rounded-pill ms-2" type="button">
         Shortcut
       </button>
     </div>
   </header>
   <div class="main">
-    <div class="cart">
+    <div class="cart bg-white">
       <div class="card_header">
         <div class="column column--order">Order</div>
         <div class="column column--sku">SKU</div>
@@ -75,17 +80,17 @@
         </ng-container>
       </div>
     </div>
-    <div class="payment">
-      <div class="form-group">
-        <i class="bi bi-search"></i>
-        <input type="text" class="form-control" placeholder="Search customer (F4)" />
-        <button class="btn btn-default" type="button">
-          <i class="bi bi-add"></i>
+    <div class="payment bg-white p-3 d-flex flex-column">
+      <div class="form-group d-flex align-items-center position-relative">
+        <i class="bi bi-search position-absolute" style="left: 1rem"></i>
+        <input type="text" class="form-control md-input ps-5 py-2 rounded-0 shadow-none border-0" placeholder="Search customer (F4)" style="padding-left: 2rem;" />
+        <button type="button" class="align-items-center btn btn-default d-inline-flex justify-content-center position-absolute rounded-circle shadow-none" style="right: 0">
+          <i class="bi bi-plus" style="font-size: 1.5rem"></i>
         </button>
       </div>
-      <div class="form-group">
+      <div class="form-group border-bottom py-2">
         <div class="form-check form-switch">
-          <input type="checkbox" role="switch" id="delivery">
+          <input type="checkbox" role="switch" id="delivery" class="form-check-input">
           <label class="form-check-label" for="delivery">Shipping</label>
         </div>
       </div>
@@ -102,38 +107,40 @@
           <label for="label">Discount (F6)</label>
           <label for="value">0</label>
         </div>
-        <div class="payment-item-strong">
+        <div class="payment-item strong">
           <label for="label">Total</label>
           <label for="value">1,550,000</label>
         </div>
-        <div class="payment-item-strong">
+        <div class="payment-item strong">
           <label for="label">Customer pay (F2)</label>
           <label for="value">1,550,000</label>
         </div>
-        <div class="quick-amounts">
-          <button type="button" class="btn btn-default">100000</button>
-          <button type="button" class="btn btn-default">100000</button>
-          <button type="button" class="btn btn-default">100000</button>
-          <button type="button" class="btn btn-default">100000</button>
-          <button type="button" class="btn btn-default">100000</button>
-          <button type="button" class="btn btn-default">100000</button>
+        <div class="quick-amounts d-grid has-3-cols py-2" style="grid-gap: 1rem">
+          <button type="button" class="btn btn-outline-dark rounded-pill">100000</button>
+          <button type="button" class="btn btn-outline-dark rounded-pill">100000</button>
+          <button type="button" class="btn btn-outline-dark rounded-pill">100000</button>
+          <button type="button" class="btn btn-outline-dark rounded-pill">100000</button>
+          <button type="button" class="btn btn-outline-dark rounded-pill">100000</button>
+          <button type="button" class="btn btn-outline-dark rounded-pill">100000</button>
         </div>
-        <div class="payment-item-strong">
+        <div class="payment-item strong border-top py-2">
           <label for="label">Return</label>
           <label for="value">0</label>
         </div>
-        <div class="form-group">
-          <i class="bi bi-pencil"></i>
-          <input type="text" class="form-control" placeholder="Notes">
+        <div class="form-group align-items-center d-flex position-relative">
+          <i class="bi bi-pencil position-absolute" style="left: 0"></i>
+          <input type="text" class="form-control border-0 md-input rounded-0 shadow-none" placeholder="Notes" style="padding-left: 2rem">
         </div>
-        <div class="actions">
-          <button type="button" class="btn btn-light">
-            Multiple payments (F7)
-          </button>
-          <button type="button" class="btn btn-success">
-            Multiple payments (F7)
-          </button>
-        </div>
+
+      </div>
+      <div class="flex-fill"></div>
+      <div class="actions d-flex justify-content-between py-2" style="height: 150px; grid-gap:  1rem">
+        <button type="button" class="btn btn-light">
+          Multiple payments (F7)
+        </button>
+        <button type="button" class="btn btn-success flex-fill">
+          Multiple payments (F7)
+        </button>
       </div>
     </div>
   </div>

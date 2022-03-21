@@ -1,6 +1,7 @@
 ﻿using JW.POS.User.Models;
 using JW.POS.User.Services;
 using JW.POS.Web.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JW.POS.Web.Controllers
@@ -18,6 +19,7 @@ namespace JW.POS.Web.Controllers
 
         [HttpPost]
         [Route("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(UserLogin user)
         {
             if (!ModelState.IsValid)
@@ -31,7 +33,10 @@ namespace JW.POS.Web.Controllers
                 var userInfo = await _userService.GetUserInfoAsync(user.UserName);
                 var token = _tokenService.GetToken(userInfo, 0);
 
-                return Ok(token);
+                return Ok(new
+                {
+                    token = token
+                });
             }
             else
             {
